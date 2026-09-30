@@ -65,6 +65,7 @@ h2{font-size:clamp(26px,5.5vw,42px);line-height:1.02;font-weight:900;margin-bott
 .steps .card{position:relative;padding-top:56px}
 .steps .card::before{counter-increment:s;content:counter(s);position:absolute;left:22px;top:16px;font-family:Unbounded;font-weight:900;font-size:26px;color:var(--accT)}
 table{width:100%;border-collapse:collapse}
+.desc p{color:var(--soft);font-size:17px;line-height:1.65}.desc p+p,.desc img+p,.desc p+img{margin-top:16px}.desc img{display:block;width:100%;border-radius:20px;border:1px solid var(--line)}
 td{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px}
 td:first-child{color:var(--muted);width:45%}
 .rev .who{display:flex;justify-content:space-between;font-weight:800;margin-bottom:6px}
@@ -131,11 +132,11 @@ footer a{color:var(--muted)}
 </div>
 </div>
 
-<!-- BENEFITS -->
-<section><div class="wrap">
-  <div class="label">Чому це зручно</div>
-  <h2 class="U" id="benefitsTitle">Що ти отримуєш</h2>
-  <div class="grid c3" id="benefits"></div>
+<!-- DESCRIPTION -->
+<section><div class="wrap" style="max-width:760px">
+  <div class="label">Опис</div>
+  <h2 class="U" id="descTitle">Про товар</h2>
+  <div class="desc" id="desc"></div>
 </div></section>
 
 <!-- SPECS -->
@@ -209,10 +210,12 @@ var PRODUCT = {
   ],
   video: "",                        // mp4 від постачальника, якщо є
   ticks: ["Перевага 1", "Перевага 2", "Перевага 3"],
-  benefits: [
-    {ic:"01", h:"Вигода 1", p:"Коротке пояснення."},
-    {ic:"02", h:"Вигода 2", p:"Коротке пояснення."},
-    {ic:"03", h:"Вигода 3", p:"Коротке пояснення."}
+  descTitle: "Про товар",
+  description: [                    // абзаци опису; можна додавати фото: {img:"url"}
+    "Перший абзац: що це за товар і для кого він.",
+    "Другий абзац: як працює і чим зручний у щоденному житті.",
+    {img:"https://placehold.co/900x600/E8DDCC/2F5D3A?text=Фото+в+описі"},
+    "Третій абзац: комплектація, догляд, важливі деталі."
   ],
   specs: [["Матеріал","—"],["Розмір","—"],["Комплектація","—"]],
   variants: [],                     // напр. ["Чорний","Білий"]
@@ -236,7 +239,8 @@ else { $("mainImg").src = P.images[0]; $("mainImg").alt = P.title; }
 P.images.forEach(function(src,i){var im=document.createElement("img");im.src=src;im.alt="";if(i===0)im.className="on";
   im.onclick=function(){var m=document.querySelector("#media img");if(m)m.src=src;document.querySelectorAll(".thumbs img").forEach(function(x){x.className=""});im.className="on"};$("thumbs").appendChild(im)});
 P.ticks.forEach(function(t){var li=document.createElement("li");li.textContent=t;$("ticks").appendChild(li)});
-P.benefits.forEach(function(b){var d=document.createElement("div");d.className="card fade";d.innerHTML='<div class="ic">'+b.ic+'</div><h3></h3><p></p>';d.querySelector("h3").textContent=b.h;d.querySelector("p").textContent=b.p;$("benefits").appendChild(d)});
+$("descTitle").textContent = P.descTitle || "Про товар";
+P.description.forEach(function(x){var el;if(typeof x==="string"){el=document.createElement("p");el.textContent=x}else if(x.img){el=document.createElement("img");el.src=x.img;el.alt=P.title;el.loading="lazy"}if(el)$("desc").appendChild(el)});
 P.specs.forEach(function(s){var tr=document.createElement("tr");tr.innerHTML="<td></td><td></td>";tr.children[0].textContent=s[0];tr.children[1].textContent=s[1];$("specs").appendChild(tr)});
 if (P.variants.length){$("variantWrap").style.display="block";P.variants.forEach(function(v){var o=document.createElement("option");o.textContent=v;$("variant").appendChild(o)})}
 if (P.reviews.length){$("revSec").style.display="block";P.reviews.forEach(function(r){var d=document.createElement("div");d.className="card rev fade";d.innerHTML='<div class="who"><b></b><span>★★★★★</span></div><p></p>';d.querySelector("b").textContent=r.n;d.querySelector("p").textContent=r.t;$("reviews").appendChild(d)})}
