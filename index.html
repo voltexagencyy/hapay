@@ -43,6 +43,16 @@ h1{font-size:clamp(28px,8vw,54px);line-height:1.02;font-weight:900}
 img,video{max-width:100%}
 .price .cur{font-size:22px}
 .ticks{list-style:none;margin-top:18px;display:grid;gap:8px}
+.bar b{font-variant-numeric:tabular-nums;background:rgba(255,255,255,.18);padding:1px 6px;border-radius:6px}
+.old{color:var(--muted);font-size:20px;font-weight:600}
+.save{background:#B8412C;color:#fff;font-weight:800;font-size:14px;border-radius:999px;padding:4px 10px;align-self:center}
+.promo{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;background:#B8412C;color:#fff;border-radius:14px;padding:12px 16px;font-weight:700;font-size:15px}
+.promo b{font-family:Unbounded;font-size:17px;font-variant-numeric:tabular-nums}
+.stock{margin-top:14px}.stock .st{font-size:14px;color:var(--soft)}.stock b{color:#B8412C}
+.stock .sb{height:8px;border-radius:99px;background:var(--field);margin-top:6px;overflow:hidden}.stock .sb i{display:block;height:100%;background:#B8412C;border-radius:99px}
+.ship{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;font-weight:700;color:var(--accT)}
+.ship .dot{width:9px;height:9px;border-radius:50%;background:#3FA35B;box-shadow:0 0 0 0 rgba(63,163,91,.6);animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(63,163,91,0)}100%{box-shadow:0 0 0 0 rgba(63,163,91,0)}}
 .ticks li{display:flex;gap:10px;align-items:flex-start}
 .ticks li::before{content:"✓";color:#FBF7F1;background:var(--acc);border-radius:50%;width:22px;height:22px;flex:none;display:grid;place-items:center;font-weight:900;font-size:13px;margin-top:2px}
 .btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;height:64px;border-radius:999px;background:var(--acc);color:#FBF7F1;font-family:Unbounded;font-weight:800;font-size:17px;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;margin-top:24px;box-shadow:0 10px 30px rgba(47,93,58,.28);transition:transform .2s}
@@ -105,7 +115,7 @@ footer a{color:var(--muted)}
 </head>
 <body>
 
-<div class="bar">Відправка сьогодні · Оплата при отриманні на Новій Пошті</div>
+<div class="bar" id="bar"><span id="barText">Оплата при отриманні на Новій Пошті</span></div>
 
 <div class="wrap">
 <nav><a class="logo" href="#">HAPAY<span>.</span></a><a class="navcta" href="#order">Замовити</a></nav>
@@ -120,7 +130,10 @@ footer a{color:var(--muted)}
     <h1 class="U" id="title"></h1>
     <p class="sub" id="subtitle"></p>
     <div class="stars" id="rating"></div>
-    <div class="price"><span class="now"><span id="priceTop"></span> <span class="cur">грн</span></span></div>
+    <div class="price"><span class="now"><span id="priceTop"></span> <span class="cur">грн</span></span><s class="old" id="oldTop"></s><span class="save" id="saveTop"></span></div>
+    <div class="promo" id="promo" style="display:none"><span id="promoText"></span><b id="promoTimer"></b></div>
+    <div class="stock" id="stock" style="display:none"><div class="st"><span id="stockText"></span></div><div class="sb"><i id="stockBar"></i></div></div>
+    <div class="ship"><span class="dot"></span><span id="shipText"></span></div>
     <ul class="ticks" id="ticks"></ul>
     <a class="btn" href="#order">Замовити зараз →</a>
     <div class="trust">
@@ -159,7 +172,8 @@ footer a{color:var(--muted)}
     <form id="form" novalidate>
       <div class="label">Оформлення замовлення</div>
       <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
-      <div class="p"><span id="priceOrder"></span> грн</div>
+      <div class="p"><span id="priceOrder"></span> грн <s class="old" id="oldOrder" style="font-size:18px"></s></div>
+      <div class="ship" style="margin-top:6px"><span class="dot"></span><span id="shipText2"></span></div>
       <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
       <div class="field"><label>Кількість</label>
         <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
@@ -220,7 +234,12 @@ var PRODUCT = {
   specs: [["Матеріал","—"],["Розмір","—"],["Комплектація","—"]],
   variants: [],                     // напр. ["Чорний","Білий"]
   reviews: [],                      // лише реальні: {n:"Ім'я", t:"текст"}
-  support: "@hapay_support"
+  support: "@hapay_support",
+  /* ---- FOMO: тільки чесні дані ---- */
+  cutoffHour: 15,                   // до котрої години відправка «сьогодні» (як у постачальника)
+  oldPrice: 0,                      // стара ціна — ЛИШЕ якщо акція реальна, інакше 0
+  promoUntil: "",                   // кінець реальної акції, напр. "2026-10-05T23:59"
+  stockLeft: 0                      // реальний залишок у постачальника; 0 = не показувати
 };
 /* Куди йдуть заявки: URL Google Apps Script або вебхук (заповнимо пізніше) */
 var ORDER_ENDPOINT = "";
@@ -246,6 +265,31 @@ if (P.variants.length){$("variantWrap").style.display="block";P.variants.forEach
 if (P.reviews.length){$("revSec").style.display="block";P.reviews.forEach(function(r){var d=document.createElement("div");d.className="card rev fade";d.innerHTML='<div class="who"><b></b><span>★★★★★</span></div><p></p>';d.querySelector("b").textContent=r.n;d.querySelector("p").textContent=r.t;$("reviews").appendChild(d)})}
 $("supportLink").textContent = P.support; $("supportLink").href = "https://t.me/" + P.support.replace("@","");
 $("yr").textContent = new Date().getFullYear();
+
+/* ---------- FOMO ---------- */
+var DAYS=["неділю","понеділок","вівторок","середу","четвер","п'ятницю","суботу"];
+var MON=["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
+function nextWork(d){d=new Date(d);do{d.setDate(d.getDate()+1)}while(d.getDay()===0);return d}
+function fmt(d){return DAYS[d.getDay()]+", "+d.getDate()+" "+MON[d.getMonth()]}
+function pad(n){return (n<10?"0":"")+n}
+function tickFomo(){
+  var now=new Date(), cut=new Date(now); cut.setHours(P.cutoffHour,0,0,0);
+  var today = now.getDay()!==0 && now<cut;
+  var ship = today? now : nextWork(now);
+  var arrive = nextWork(ship);
+  if (today){var s=Math.floor((cut-now)/1000);
+    $("barText").innerHTML="Замов протягом <b>"+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+"</b> — відправимо сьогодні";
+  } else { var tm=new Date(now);tm.setDate(tm.getDate()+1);$("barText").textContent="Відправка "+(ship.toDateString()===tm.toDateString()?"завтра":"у "+fmt(ship))+" · Оплата при отриманні"; }
+  var txt="Отримаєш вже у "+fmt(arrive);
+  $("shipText").textContent=txt; $("shipText2").textContent=txt;
+  if (P.oldPrice>P.price && P.promoUntil){var end=new Date(P.promoUntil), r=Math.floor((end-now)/1000);
+    if(r>0){$("promo").style.display="flex";$("promoText").textContent="Акційна ціна ще:";
+      var dd=Math.floor(r/86400);$("promoTimer").textContent=(dd?dd+" д ":"")+pad(Math.floor(r%86400/3600))+":"+pad(Math.floor(r%3600/60))+":"+pad(r%60);}
+    else {$("promo").style.display="none"}}
+}
+if (P.oldPrice>P.price){["oldTop","oldOrder"].forEach(function(i){$(i).textContent=P.oldPrice+" грн"});$("saveTop").textContent="−"+Math.round((1-P.price/P.oldPrice)*100)+"%";}
+if (P.stockLeft>0){$("stock").style.display="block";$("stockText").innerHTML="Залишилось <b>"+P.stockLeft+" шт.</b> на складі";$("stockBar").style.width=Math.max(8,Math.min(100,P.stockLeft*4))+"%";}
+tickFomo(); setInterval(tickFomo,1000);
 
 /* кількість і сума */
 var q=1; function upd(){$("qty").textContent=q;$("total").textContent=q*P.price}
