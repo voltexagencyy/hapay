@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B0B0B">
+<title>Hapay — товар</title>
+<meta name="description" content="Замовляй з оплатою при отриманні. Доставка Новою Поштою 1–3 дні.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0B0B;--card:#141414;--line:rgba(255,255,255,.09);--text:#F4F4F0;--muted:#8C8C88;--acc:#C6FF3D;--ink:#0B0B0B}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(50% 35% at 85% 0%,rgba(198,255,61,.14),transparent 70%)}
+.wrap{position:relative;width:100%;max-width:1080px;margin:0 auto;padding:0 18px}
+.U{font-family:Unbounded,system-ui,sans-serif;text-transform:uppercase;letter-spacing:-.02em}
+.acc{color:var(--acc)}
+/* top bar */
+.bar{background:var(--acc);color:var(--ink);font-weight:800;font-size:13px;text-align:center;padding:8px 12px}
+nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-family:Unbounded;font-weight:900;font-size:22px;color:var(--text);text-decoration:none}
+.logo span{color:var(--acc)}
+.navcta{font-weight:800;font-size:14px;color:var(--ink);background:var(--acc);border-radius:999px;padding:10px 18px;text-decoration:none}
+/* hero */
+.hero{display:grid;gap:28px;padding:10px 0 40px}
+@media(min-width:900px){.hero{grid-template-columns:1.05fr 1fr;align-items:center;padding:30px 0 70px}}
+.media{position:relative;border-radius:28px;overflow:hidden;background:var(--card);border:1px solid var(--line);aspect-ratio:1/1}
+.media img,.media video{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;left:14px;top:14px;background:var(--acc);color:var(--ink);font-weight:800;font-size:13px;border-radius:999px;padding:7px 14px}
+.thumbs{display:flex;gap:10px;margin-top:10px}
+.thumbs img{width:64px;height:64px;border-radius:14px;object-fit:cover;border:2px solid transparent;cursor:pointer;background:var(--card)}
+.thumbs img.on{border-color:var(--acc)}
+h1{font-size:clamp(30px,7vw,54px);line-height:1;font-weight:900}
+.sub{color:#cfcfca;margin-top:14px;font-size:18px}
+.stars{margin-top:14px;font-size:15px;color:#cfcfca}
+.stars b{color:var(--acc);letter-spacing:2px}
+.price{display:flex;align-items:baseline;gap:14px;margin-top:22px}
+.price .now{font-family:Unbounded;font-weight:900;font-size:44px}
+.price .cur{font-size:22px}
+.ticks{list-style:none;margin-top:18px;display:grid;gap:8px}
+.ticks li{display:flex;gap:10px;align-items:flex-start}
+.ticks li::before{content:"✓";color:var(--ink);background:var(--acc);border-radius:50%;width:22px;height:22px;flex:none;display:grid;place-items:center;font-weight:900;font-size:13px;margin-top:2px}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;height:64px;border-radius:999px;background:var(--acc);color:var(--ink);font-family:Unbounded;font-weight:800;font-size:17px;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;margin-top:24px;box-shadow:0 10px 40px rgba(198,255,61,.25);transition:transform .2s}
+.btn:active{transform:scale(.98)}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.trust div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 8px;text-align:center;font-size:12.5px;color:#cfcfca;line-height:1.3}
+.trust b{display:block;font-size:20px;margin-bottom:4px}
+/* sections */
+section{padding:56px 0;border-top:1px solid var(--line)}
+.label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+h2{font-size:clamp(26px,5.5vw,42px);line-height:1.02;font-weight:900;margin-bottom:26px}
+.grid{display:grid;gap:14px}
+@media(min-width:760px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px}
+.card .ic{font-size:30px}
+.card h3{font-size:19px;margin:10px 0 6px;font-weight:800}
+.card p{color:#bdbdb8;font-size:15.5px}
+.steps{counter-reset:s;display:grid;gap:12px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps .card{position:relative;padding-top:56px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;left:24px;top:18px;font-family:Unbounded;font-weight:900;font-size:26px;color:var(--acc)}
+table{width:100%;border-collapse:collapse}
+td{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+td:first-child{color:var(--muted);width:45%}
+.rev .who{display:flex;justify-content:space-between;font-weight:800;margin-bottom:6px}
+.rev .who span{color:var(--acc);letter-spacing:2px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--acc);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:#bdbdb8;margin-top:10px}
+/* order */
+.order{background:linear-gradient(160deg,#171717,#101010);border:1px solid var(--line);border-radius:30px;padding:26px}
+.order .p{font-family:Unbounded;font-weight:900;font-size:36px;margin:6px 0 4px}
+.field{margin-top:14px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.field input,.field select{width:100%;height:58px;border-radius:16px;border:1px solid var(--line);background:#0e0e0e;color:var(--text);font-size:17px;padding:0 16px;font-family:inherit}
+.field input:focus,.field select:focus{outline:2px solid var(--acc);border-color:transparent}
+.qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;width:max-content}
+.qty button{width:52px;height:52px;background:#0e0e0e;color:var(--text);border:0;font-size:22px;cursor:pointer}
+.qty span{min-width:48px;text-align:center;font-weight:800}
+.total{display:flex;justify-content:space-between;margin-top:16px;font-weight:800}
+.note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.ok{display:none;text-align:center;padding:30px 10px}
+.ok .big{font-size:54px}
+.ok h3{font-family:Unbounded;font-size:24px;margin:10px 0}
+.err{color:#ff8080;font-size:14px;margin-top:8px;display:none}
+/* sticky */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(11,11,11,.92);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .35s}
+.sticky.on{transform:none}
+.sticky .t{flex:1;font-size:13px;color:var(--muted);line-height:1.2}
+.sticky .t b{display:block;color:var(--text);font-family:Unbounded;font-size:18px}
+.sticky .btn{margin:0;width:auto;height:52px;padding:0 24px;font-size:14px}
+footer{padding:36px 0 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+.fade{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="bar">🚚 Відправка сьогодні · Оплата при отриманні на Новій Пошті</div>
+
+<div class="wrap">
+<nav><a class="logo" href="#">HAPAY<span>.</span></a><a class="navcta" href="#order">Замовити</a></nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="media" id="media"><span class="badge" id="badge"></span><img id="mainImg" alt=""></div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+  <div>
+    <h1 class="U" id="title"></h1>
+    <p class="sub" id="subtitle"></p>
+    <div class="stars" id="rating"></div>
+    <div class="price"><span class="now"><span id="priceTop"></span> <span class="cur">грн</span></span></div>
+    <ul class="ticks" id="ticks"></ul>
+    <a class="btn" href="#order">Замовити зараз →</a>
+    <div class="trust">
+      <div><b>💳</b>Оплата при отриманні</div>
+      <div><b>📦</b>Нова Пошта 1–3 дні</div>
+      <div><b>↩️</b>Повернення 14 днів</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- BENEFITS -->
+<section><div class="wrap">
+  <div class="label">Чому це зручно</div>
+  <h2 class="U" id="benefitsTitle">Що ти отримуєш</h2>
+  <div class="grid c3" id="benefits"></div>
+</div></section>
+
+<!-- HOW -->
+<section><div class="wrap">
+  <div class="label">Як замовити</div>
+  <h2 class="U">4 простих кроки</h2>
+  <div class="steps">
+    <div class="card"><h3>Заявка</h3><p>Ім'я і телефон — 20 секунд.</p></div>
+    <div class="card"><h3>Дзвінок</h3><p>Менеджер уточнить деталі і відділення.</p></div>
+    <div class="card"><h3>Відправка</h3><p>Надсилаємо в день замовлення.</p></div>
+    <div class="card"><h3>Оплата</h3><p>Перевіряєш на пошті — і тільки тоді платиш.</p></div>
+  </div>
+</div></section>
+
+<!-- SPECS -->
+<section><div class="wrap">
+  <div class="label">Характеристики</div>
+  <h2 class="U">Деталі</h2>
+  <table id="specs"></table>
+</div></section>
+
+<!-- REVIEWS (показуємо тільки реальні відгуки) -->
+<section id="revSec" style="display:none"><div class="wrap">
+  <div class="label">Відгуки</div>
+  <h2 class="U">Що кажуть покупці</h2>
+  <div class="grid c3" id="reviews"></div>
+</div></section>
+
+<!-- ORDER -->
+<section id="order"><div class="wrap" style="max-width:560px">
+  <div class="order">
+    <form id="form" novalidate>
+      <div class="label">Оформлення замовлення</div>
+      <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
+      <div class="p"><span id="priceOrder"></span> грн</div>
+      <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
+      <div class="field"><label>Кількість</label>
+        <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
+      </div>
+      <div class="field"><label for="name">Ваше ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
+      <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required></div>
+      <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
+      <div class="err" id="err">Перевір ім'я і номер телефону.</div>
+      <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
+      <p class="note">Менеджер передзвонить протягом 15 хвилин (з 9:00 до 20:00). Передоплата не потрібна.</p>
+    </form>
+    <div class="ok" id="ok">
+      <div class="big">✅</div>
+      <h3>Дякуємо!</h3>
+      <p style="color:#cfcfca">Замовлення прийнято. Чекай дзвінка менеджера — уточнимо відділення Нової Пошти.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section><div class="wrap" style="max-width:760px">
+  <div class="label">Питання</div>
+  <h2 class="U">Часті питання</h2>
+  <details><summary>Чи потрібна передоплата?</summary><p>Ні. Оплата тільки при отриманні на Новій Пошті, після огляду товару.</p></details>
+  <details><summary>Скільки йде доставка?</summary><p>Відправляємо в день замовлення, доставка 1–3 дні по всій Україні.</p></details>
+  <details><summary>Що, якщо товар не підійде?</summary><p>Можна повернути протягом 14 днів відповідно до закону «Про захист прав споживачів».</p></details>
+  <details><summary>Скільки коштує доставка?</summary><p>За тарифами Нової Пошти, зазвичай 70–120 грн разом з комісією за переказ.</p></details>
+</div></section>
+
+<footer><div class="wrap">© <span id="yr"></span> Hapay · <a href="#order">Замовити</a> · Підтримка: <a id="supportLink" href="#"></a></div></footer>
+
+<div class="sticky" id="sticky"><div class="t"><span id="stickyName"></span><b><span id="priceSticky"></span> грн</b></div><a class="btn" href="#order">Замовити</a></div>
+
+<script>
+/* =========================================================
+   КОНФІГ ТОВАРУ — міняємо тільки цей блок під кожен товар
+   ========================================================= */
+var PRODUCT = {
+  title: "Назва товару",
+  subtitle: "Одне речення: яку проблему вирішує товар і чому він кращий.",
+  price: 799,
+  badge: "Хіт продажів",
+  rating: "",                       // напр. "4.8 · 127 відгуків" — лише якщо це реальні дані
+  images: [
+    "https://placehold.co/900x900/141414/C6FF3D?text=Фото+1",
+    "https://placehold.co/900x900/141414/C6FF3D?text=Фото+2",
+    "https://placehold.co/900x900/141414/C6FF3D?text=Фото+3"
+  ],
+  video: "",                        // mp4 від постачальника, якщо є
+  ticks: ["Перевага 1", "Перевага 2", "Перевага 3"],
+  benefits: [
+    {ic:"⚡", h:"Вигода 1", p:"Коротке пояснення."},
+    {ic:"🛡️", h:"Вигода 2", p:"Коротке пояснення."},
+    {ic:"🎁", h:"Вигода 3", p:"Коротке пояснення."}
+  ],
+  specs: [["Матеріал","—"],["Розмір","—"],["Комплектація","—"]],
+  variants: [],                     // напр. ["Чорний","Білий"]
+  reviews: [],                      // лише реальні: {n:"Ім'я", t:"текст"}
+  support: "@hapay_support"
+};
+/* Куди йдуть заявки: URL Google Apps Script або вебхук (заповнимо пізніше) */
+var ORDER_ENDPOINT = "";
+var PIXEL_ID = "";
+
+/* ================= рендер ================= */
+var P = PRODUCT, $ = function(id){return document.getElementById(id)};
+document.title = P.title + " — Hapay";
+$("title").textContent = P.title; $("orderTitle").textContent = P.title; $("stickyName").textContent = P.title;
+$("subtitle").textContent = P.subtitle;
+["priceTop","priceOrder","priceSticky"].forEach(function(i){$(i).textContent = P.price});
+if (P.badge) $("badge").textContent = P.badge; else $("badge").remove();
+if (P.rating) $("rating").innerHTML = "<b>★★★★★</b> " + P.rating;
+if (P.video){ $("mainImg").outerHTML = '<video src="'+P.video+'" autoplay muted loop playsinline></video>'; }
+else { $("mainImg").src = P.images[0]; $("mainImg").alt = P.title; }
+P.images.forEach(function(src,i){var im=document.createElement("img");im.src=src;im.alt="";if(i===0)im.className="on";
+  im.onclick=function(){var m=document.querySelector("#media img");if(m)m.src=src;document.querySelectorAll(".thumbs img").forEach(function(x){x.className=""});im.className="on"};$("thumbs").appendChild(im)});
+P.ticks.forEach(function(t){var li=document.createElement("li");li.textContent=t;$("ticks").appendChild(li)});
+P.benefits.forEach(function(b){var d=document.createElement("div");d.className="card fade";d.innerHTML='<div class="ic">'+b.ic+'</div><h3></h3><p></p>';d.querySelector("h3").textContent=b.h;d.querySelector("p").textContent=b.p;$("benefits").appendChild(d)});
+P.specs.forEach(function(s){var tr=document.createElement("tr");tr.innerHTML="<td></td><td></td>";tr.children[0].textContent=s[0];tr.children[1].textContent=s[1];$("specs").appendChild(tr)});
+if (P.variants.length){$("variantWrap").style.display="block";P.variants.forEach(function(v){var o=document.createElement("option");o.textContent=v;$("variant").appendChild(o)})}
+if (P.reviews.length){$("revSec").style.display="block";P.reviews.forEach(function(r){var d=document.createElement("div");d.className="card rev fade";d.innerHTML='<div class="who"><b></b><span>★★★★★</span></div><p></p>';d.querySelector("b").textContent=r.n;d.querySelector("p").textContent=r.t;$("reviews").appendChild(d)})}
+$("supportLink").textContent = P.support; $("supportLink").href = "https://t.me/" + P.support.replace("@","");
+$("yr").textContent = new Date().getFullYear();
+
+/* кількість і сума */
+var q=1; function upd(){$("qty").textContent=q;$("total").textContent=q*P.price}
+$("minus").onclick=function(){if(q>1){q--;upd()}}; $("plus").onclick=function(){if(q<9){q++;upd()}}; upd();
+
+/* маска телефону */
+$("phone").addEventListener("focus",function(){if(!this.value)this.value="+380 "});
+
+/* Meta Pixel */
+if (PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',PIXEL_ID);fbq('track','PageView');}
+
+/* відправка заявки */
+$("form").addEventListener("submit",function(e){
+  e.preventDefault();
+  var name=$("name").value.trim(), phone=$("phone").value.replace(/[^\d+]/g,"");
+  if(name.length<2 || phone.replace(/\D/g,"").length<12){$("err").style.display="block";return}
+  $("err").style.display="none"; $("submit").disabled=true; $("submit").textContent="Надсилаємо…";
+  var data={product:P.title,price:P.price,qty:q,total:q*P.price,variant:$("variant").value||"",name:name,phone:phone,
+    page:location.href,utm:location.search,time:new Date().toISOString()};
+  var done=function(){$("form").style.display="none";$("ok").style.display="block";
+    if(window.fbq)fbq('track','Lead',{value:data.total,currency:'UAH'});};
+  if(!ORDER_ENDPOINT){console.log("ORDER",data);done();return}
+  fetch(ORDER_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(data)}).then(done).catch(done);
+});
+
+/* sticky + анімації */
+var sticky=$("sticky"), orderEl=$("order");
+window.addEventListener("scroll",function(){var r=orderEl.getBoundingClientRect();sticky.classList.toggle("on",scrollY>500 && (r.top>innerHeight||r.bottom<0))},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll(".fade").forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
