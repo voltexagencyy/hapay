@@ -6,7 +6,7 @@ var HAPAY_CFG = {
   PIXEL_ID: "",          // Meta Pixel ID, напр. "1234567890123456"
   GADS_ID: "",           // Google Ads, напр. "AW-123456789"
   GADS_LEAD_LABEL: "",   // мітка конверсії "Заявка", напр. "AbCdEfGh"
-  ORDER_ENDPOINT: ""     // URL Google Apps Script (таблиця + Telegram)
+  ORDER_ENDPOINT: "https://script.google.com/macros/s/AKfycbys8X1zj7HmTgMQv0IkFc-H-Ot2EFlFg4H5kP61iqcJOePnT3rxUEloQxwLxxBHBwBcMg/exec"  // таблиця + Telegram
 };
 
 (function(){
