@@ -110,7 +110,7 @@ details p{color:var(--muted);margin-top:10px}
 .pack.on .r::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--acc)}
 .pack .l{flex:1}.pack .l b{display:block;font-size:16px}.pack .l span{font-size:13px;color:var(--accT);font-weight:700}
 .pack .pp{font-weight:800;font-size:17px;white-space:nowrap}
-.total{display:flex;justify-content:space-between;margin-top:16px;font-weight:800}
+.total{display:flex;justify-content:space-between;margin-top:16px;font-weight:800}.bump{display:flex;gap:12px;align-items:center;margin-top:14px;border:1.5px dashed var(--acc);border-radius:16px;padding:12px 14px;background:#fff;cursor:pointer}.bump img{width:56px;height:56px;object-fit:contain;border-radius:10px;background:#fff;flex:none}.bump .bx{width:22px;height:22px;border:2px solid var(--acc);border-radius:6px;flex:none;position:relative}.bump.on .bx{background:var(--acc)}.bump.on .bx::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}.bump .bt{font-size:14px;line-height:1.35}.bump .bt b{display:block}.bump .bt s{opacity:.6}.steps{text-align:left;max-width:380px;margin:18px auto 0;padding:0;list-style:none}.steps li{display:flex;gap:10px;margin:10px 0;color:var(--soft)}.steps li b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}.tg{display:inline-block;margin-top:16px;font-weight:800;color:var(--acc);text-decoration:none;border:1.5px solid var(--acc);border-radius:999px;padding:10px 18px}
 .note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
 .ok{display:none;text-align:center;padding:30px 10px}
 .ok .big{font-size:54px}
@@ -199,6 +199,7 @@ footer a{color:var(--muted)}
       <div class="field"><label for="comment">Коментар до замовлення <span style="opacity:.7">(необов'язково)</span></label><input id="comment" maxlength="200" placeholder="Напр.: потрібно 4 шт., зателефонуйте після 18:00"></div>
       <div class="field"><label for="name">Ваше ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
       <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required></div>
+      <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
       <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
       <div class="err" id="err">Перевір ім'я і номер телефону.</div>
       <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
@@ -207,7 +208,9 @@ footer a{color:var(--muted)}
     <div class="ok" id="ok">
       <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
       <h3>Дякуємо!</h3>
-      <p style="color:var(--soft)">Замовлення прийнято. Чекай дзвінка менеджера — уточнимо відділення Нової Пошти.</p>
+      <p style="color:var(--soft)">Замовлення прийнято.</p>
+      <ol class="steps"><li><b>1</b><span>Протягом 15 хвилин зателефонуємо (щодня 9:00–20:00) і уточнимо відділення Нової Пошти.</span></li><li><b>2</b><span>Відправимо в день підтвердження і надішлемо номер ТТН.</span></li><li><b>3</b><span>Огляньте товар на пошті й оплатіть тільки якщо все гаразд.</span></li></ol>
+      <a class="tg" href="https://t.me/hapay_support" target="_blank" rel="noopener">Питання? Напишіть у Telegram</a>
     </div>
   </div>
 </div></section>
@@ -335,9 +338,15 @@ var PRODUCT = {
  "cutoffHour": 15,
  "oldPrice": 0,
  "promoUntil": "",
- "stockLeft": 0
+ "stockLeft": 0,
+ "bump": {
+  "title": "Павербанк 20000 мА·год",
+  "price": 600,
+  "full": 699,
+  "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7682787897_vneshnij-akkumulyator-power.jpg"
+ }
 };
-var MORE = [{"id": "powerbank-20000", "title": "Павербанк 20000 мА·год з вбудованими кабелями", "price": 699, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7682787897_vneshnij-akkumulyator-power.jpg"}, {"id": "lampa-retro", "title": "Ретро-лампа акумуляторна, до 1000 лм", "price": 649, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/06/7510493439_akkumulyatornyj-retro-led-fonar.jpg"}, {"id": "nalobnyi-lihtar", "title": "Налобний ліхтар Bailong з акумуляторами та зумом", "price": 399, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/08/6175815711_nalobnyj-fonar-led.jpg"}, {"id": "globus-levitatsiya", "title": "Глобус, що левітує, з LED-підсвіткою", "price": 1299, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/11/6387923061_globus-svetodiodnyj-true.jpg"}, {"id": "proektor-hy300", "title": "Міні-проектор HY300 з Android і Wi-Fi", "price": 1799, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/11/6378853755_multimedijnyj-portativnyj-mini-proektor.jpg"}, {"id": "masazhna-podushka", "title": "Масажна подушка з підігрівом для шиї та спини", "price": 1199, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/06/7492193104_massazhnaya-podushka-dlya.jpg"}, {"id": "kopilka-kit", "title": "Копілка «Кіт-злодюжка»", "price": 449, "img": "https://www.aveopt.com.ua/wp-content/uploads/2022/01/3550268714_kopilka-koshka-vorishka.jpg"}];
+var MORE = [{"id": "nabir", "title": "Набір на відключення: ліхтар + павербанк", "price": 1099, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582976_ruchnoj-fonar-s.jpg"}, {"id": "powerbank-20000", "title": "Павербанк 20000 мА·год з вбудованими кабелями", "price": 699, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7682787897_vneshnij-akkumulyator-power.jpg"}, {"id": "lampa-retro", "title": "Ретро-лампа акумуляторна, до 1000 лм", "price": 649, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/06/7510493439_akkumulyatornyj-retro-led-fonar.jpg"}, {"id": "nalobnyi-lihtar", "title": "Налобний ліхтар Bailong з акумуляторами та зумом", "price": 399, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/08/6175815711_nalobnyj-fonar-led.jpg"}, {"id": "globus-levitatsiya", "title": "Глобус, що левітує, з LED-підсвіткою", "price": 1299, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/11/6387923061_globus-svetodiodnyj-true.jpg"}, {"id": "proektor-hy300", "title": "Міні-проектор HY300 з Android і Wi-Fi", "price": 1799, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/11/6378853755_multimedijnyj-portativnyj-mini-proektor.jpg"}, {"id": "masazhna-podushka", "title": "Масажна подушка з підігрівом для шиї та спини", "price": 1199, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/06/7492193104_massazhnaya-podushka-dlya.jpg"}, {"id": "kopilka-kit", "title": "Копілка «Кіт-злодюжка»", "price": 449, "img": "https://www.aveopt.com.ua/wp-content/uploads/2022/01/3550268714_kopilka-koshka-vorishka.jpg"}];
 /* Pixel, Google Ads і прийом заявок — в /assets/hapay.js (один на весь сайт) */
 
 /* ================= рендер ================= */
@@ -395,12 +404,14 @@ if (P.stockLeft>0){$("stock").style.display="block";$("stockText").innerHTML="З
 tickFomo(); setInterval(tickFomo,1000);
 
 /* кількість і сума */
-var q=1, pk=0; function curPrice(){return P.packs?P.packs[pk].price:q*P.price}
+var q=1, pk=0, bumpOn=false; function curPrice(){return (P.packs?P.packs[pk].price:q*P.price)+(bumpOn&&P.bump?P.bump.price:0)}
 function upd(){$("qty").textContent=q;$("total").textContent=curPrice()}
 if (P.packs){$("packWrap").style.display="block";$("qtyWrap").style.display="none";
   P.packs.forEach(function(p,i){var d=document.createElement("div");d.className="pack"+(i===0?" on":"");d.innerHTML='<span class="r"></span><span class="l"><b></b><span></span></span><span class="pp"></span>';
     d.querySelector("b").textContent=p.label;d.querySelector(".l span").textContent=p.note||"";d.querySelector(".pp").textContent=p.price+" грн";
     d.onclick=function(){pk=i;document.querySelectorAll(".pack").forEach(function(x){x.classList.remove("on")});d.classList.add("on");upd()};$("packs").appendChild(d)});}
+if (P.bump){$("bump").style.display="flex";$("bumpImg").src=P.bump.img;$("bumpTitle").textContent="+ "+P.bump.title+" за "+P.bump.price+" грн";$("bumpNote").innerHTML="Окремо <s>"+P.bump.full+" грн</s> · додати до замовлення";
+  $("bump").onclick=function(){bumpOn=!bumpOn;$("bump").classList.toggle("on",bumpOn);upd()};}
 $("minus").onclick=function(){if(q>1){q--;upd()}}; $("plus").onclick=function(){if(q<9){q++;upd()}}; upd();
 
 /* маска телефону */
@@ -424,7 +435,7 @@ $("form").addEventListener("submit",function(e){
   if(name.length<2 || phone.replace(/\D/g,"").length<12){$("err").style.display="block";return}
   $("err").style.display="none"; $("submit").disabled=true; $("submit").textContent="Надсилаємо…";
   var pkObj=P.packs?P.packs[pk]:null;
-  var data={product_id:P.id,product:P.title,price:pkObj?pkObj.price:P.price,qty:pkObj?pkObj.n:q,total:curPrice(),variant:[pkObj?pkObj.label:"",$("variant").value||"",($("comment").value.trim()?"Коментар: "+$("comment").value.trim():"")].filter(Boolean).join(" · "),name:name,phone:phone};
+  var data={product_id:P.id,product:P.title,price:pkObj?pkObj.price:P.price,qty:pkObj?pkObj.n:q,total:curPrice(),variant:[pkObj?pkObj.label:"",$("variant").value||"",(bumpOn&&P.bump?"+ "+P.bump.title+" ("+P.bump.price+" грн)":""),($("comment").value.trim()?"Коментар: "+$("comment").value.trim():"")].filter(Boolean).join(" · "),name:name,phone:phone};
   HAPAY.order(data,function(){$("form").style.display="none";$("ok").style.display="block";
     HAPAY.track("Lead",{id:P.id,name:P.title,value:data.total});});
 });
