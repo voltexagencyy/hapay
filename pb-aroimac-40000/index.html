@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3ECE1">
+<title>Павербанк Aroimac ORA503 на 40 000 мА·год — Hapay</title>
+<script src="/assets/hapay.js?v=2"></script>
+<meta name="description" content="Замовляй з оплатою при отриманні. Доставка Новою Поштою 1–3 дні.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3ECE1;--card:#FBF7F1;--line:rgba(60,40,20,.10);--text:#2A2118;--muted:#7A6D5E;--soft:#4A3F33;--acc:#2F5D3A;--accT:#2F5D3A;--ink:#2A2118;--field:#F0E8DC}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;font-size:17px;line-height:1.55;overflow-x:hidden;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(60% 30% at 90% 0%,rgba(214,176,120,.35),transparent 70%)}
+.wrap{position:relative;width:100%;max-width:1080px;margin:0 auto;padding:0 18px}
+.U{font-family:Unbounded,system-ui,sans-serif;text-transform:uppercase;letter-spacing:-.02em}
+.acc{color:var(--accT)}
+/* top bar */
+.bar{background:var(--acc);color:#FBF7F1;font-weight:800;font-size:13px;text-align:center;padding:8px 12px}
+nav{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font-family:Unbounded;font-weight:900;font-size:22px;color:var(--text);text-decoration:none}
+.logo span{color:var(--accT)}
+.navcta{font-weight:800;font-size:14px;color:#fff;background:var(--ink);border-radius:999px;padding:10px 18px;text-decoration:none}
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:4px 0 36px}
+.hero>*{min-width:0}
+@media(min-width:900px){.hero{grid-template-columns:1.05fr 1fr;align-items:center;padding:30px 0 70px}}
+.media{position:relative;border-radius:22px;overflow:hidden;background:var(--card);border:1px solid var(--line);aspect-ratio:1/1}
+.media img,.media video{width:100%;height:100%;object-fit:contain;display:block;background:#fff}
+.badge{display:inline-block;background:var(--card);color:var(--acc);font-weight:700;font-size:13px;border-radius:999px;padding:6px 12px;margin:2px 0 10px;border:1px solid var(--line)}
+.gnav{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.gnav svg{width:20px;height:20px}
+.gbar{display:flex;align-items:center;gap:8px;margin-top:10px}.gbar .thumbs{flex:1;min-width:0;margin-top:0}
+
+.thumbs{display:flex;gap:10px;margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}.thumbs::-webkit-scrollbar{display:none}
+.thumbs img{flex:none;width:64px;height:64px;border-radius:14px;object-fit:cover;border:2px solid transparent;cursor:pointer;background:var(--card)}
+.thumbs img.on{border-color:var(--acc)}
+h1{font-size:clamp(22px,6.2vw,48px);line-height:1.08;font-weight:900;overflow-wrap:break-word;hyphens:none;-webkit-hyphens:none;text-wrap:balance}.back{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--soft);text-decoration:none;margin:2px 0 12px}.back:hover{color:var(--acc)}.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.mcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--text)}.mcard img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff;display:block}.mcard div{padding:10px 12px 12px;font-weight:700;font-size:14px;line-height:1.25}.mcard b{display:block;margin-top:6px;color:var(--acc);font-size:16px}.allbtn{display:inline-block;margin-top:18px;font-weight:800;color:var(--text);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:12px 20px;text-decoration:none}
+.sub{color:var(--soft);margin-top:14px;font-size:18px}
+.stars{margin-top:14px;font-size:15px;color:var(--soft)}
+.stars b{color:#C98A1B;letter-spacing:2px}
+.price{display:flex;align-items:baseline;gap:14px;margin-top:22px}
+.price .now{font-family:Unbounded;font-weight:900;font-size:40px}
+@media(max-width:380px){.trust div{font-size:11.5px}.btn{font-size:15px}.sticky .btn{padding:0 18px}}
+img,video{max-width:100%}
+.price .cur{font-size:22px}
+.ticks{list-style:none;margin-top:18px;display:grid;gap:8px}
+.bar b{font-variant-numeric:tabular-nums;background:rgba(255,255,255,.18);padding:1px 6px;border-radius:6px}
+.old{color:var(--muted);font-size:20px;font-weight:600}
+.save:empty{display:none}
+.save{background:#B8412C;color:#fff;font-weight:800;font-size:14px;border-radius:999px;padding:4px 10px;align-self:center}
+.promo{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;background:#B8412C;color:#fff;border-radius:14px;padding:12px 16px;font-weight:700;font-size:15px}
+.promo b{font-family:Unbounded;font-size:17px;font-variant-numeric:tabular-nums}
+.stock{margin-top:14px}.stock .st{font-size:14px;color:var(--soft)}.stock b{color:#B8412C}
+.stock .sb{height:8px;border-radius:99px;background:var(--field);margin-top:6px;overflow:hidden}.stock .sb i{display:block;height:100%;background:#B8412C;border-radius:99px}
+.ship{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:15px;font-weight:700;color:var(--accT)}
+.ship .dot{width:9px;height:9px;border-radius:50%;background:#3FA35B;box-shadow:0 0 0 0 rgba(63,163,91,.6);animation:pulse 1.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(63,163,91,0)}100%{box-shadow:0 0 0 0 rgba(63,163,91,0)}}
+.ticks li{display:flex;gap:10px;align-items:flex-start}
+.ticks li::before{content:"✓";color:#FBF7F1;background:var(--acc);border-radius:50%;width:22px;height:22px;flex:none;display:grid;place-items:center;font-weight:900;font-size:13px;margin-top:2px}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;height:64px;border-radius:999px;background:var(--acc);color:#FBF7F1;font-family:Unbounded;font-weight:800;font-size:17px;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;margin-top:24px;box-shadow:0 10px 30px rgba(47,93,58,.28);transition:transform .2s}
+.btn:active{transform:scale(.98)}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.trust div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 8px;text-align:center;font-size:12.5px;color:var(--soft);line-height:1.3}
+.trust b{display:flex;justify-content:center;color:var(--accT);margin-bottom:6px}
+/* sections */
+section{padding:44px 0;border-top:1px solid var(--line)}
+.label{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+h2{font-size:clamp(26px,5.5vw,42px);line-height:1.02;font-weight:900;margin-bottom:26px}
+.grid{display:grid;gap:14px}
+@media(min-width:760px){.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c2{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.card .ic{font-family:Unbounded;font-weight:900;font-size:24px;color:var(--accT)}
+.card h3{font-size:19px;margin:10px 0 6px;font-weight:800}
+.card p{color:var(--muted);font-size:15.5px}
+.steps{counter-reset:s;display:grid;gap:12px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps .card{position:relative;padding-top:56px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;left:22px;top:16px;font-family:Unbounded;font-weight:900;font-size:26px;color:var(--accT)}
+table{width:100%;border-collapse:collapse}
+.desc p{color:var(--soft);font-size:17px;line-height:1.65}.desc p+p,.desc img+p,.desc p+img{margin-top:16px}.desc img{display:block;width:100%;border-radius:20px;border:1px solid var(--line)}
+td{padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+td:first-child{color:var(--muted);width:45%}
+.rev .who{display:flex;justify-content:space-between;font-weight:800;margin-bottom:6px}
+.rev .who span{color:#C98A1B;letter-spacing:2px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{font-weight:800;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--accT);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:10px}
+/* order */
+.order{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 20px 60px -20px rgba(0,0,0,.18)}
+.order .p{font-family:Unbounded;font-weight:900;font-size:36px;margin:6px 0 4px}
+.field{margin-top:14px}
+.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+.field input,.field select{width:100%;height:56px;font-size:16px!important;border-radius:16px;border:1px solid var(--line);background:var(--field);color:var(--text);font-size:17px;padding:0 16px;font-family:inherit}
+.field input:focus,.field select:focus{outline:2px solid var(--accT);border-color:transparent}
+.qty{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;width:max-content}
+.qty button{width:52px;height:52px;background:var(--field);color:var(--text);border:0;font-size:22px;cursor:pointer}
+.qty span{min-width:48px;text-align:center;font-weight:800}
+.packs{display:grid;gap:10px}
+.pack{display:flex;align-items:center;gap:12px;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;background:var(--field);cursor:pointer}
+.pack.on{border-color:var(--acc);background:#fff}
+.pack .r{width:20px;height:20px;border-radius:50%;border:2px solid var(--muted);flex:none;position:relative}
+.pack.on .r{border-color:var(--acc)}
+.pack.on .r::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--acc)}
+.pack .l{flex:1}.pack .l b{display:block;font-size:16px}.pack .l span{font-size:13px;color:var(--accT);font-weight:700}
+.pack .pp{font-weight:800;font-size:17px;white-space:nowrap}
+.total{display:flex;justify-content:space-between;margin-top:16px;font-weight:800}.bump{display:flex;gap:12px;align-items:center;margin-top:14px;border:1.5px dashed var(--acc);border-radius:16px;padding:12px 14px;background:#fff;cursor:pointer}.bump img{width:56px;height:56px;object-fit:contain;border-radius:10px;background:#fff;flex:none}.bump .bx{width:22px;height:22px;border:2px solid var(--acc);border-radius:6px;flex:none;position:relative}.bump.on .bx{background:var(--acc)}.bump.on .bx::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}.bump .bt{font-size:14px;line-height:1.35}.bump .bt b{display:block}.bump .bt s{opacity:.6}.steps{text-align:left;max-width:380px;margin:18px auto 0;padding:0;list-style:none}.steps li{display:flex;gap:10px;margin:10px 0;color:var(--soft)}.steps li b{flex:none;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}.combo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:3%;background:#fff;padding:8% 5%}.combo img{width:44%!important;height:auto!important;max-height:80%;object-fit:contain!important}.combo img+span+img{width:50%!important}.combo span{font-family:Unbounded,sans-serif;font-weight:900;font-size:44px;color:var(--acc);line-height:1}.mcard .duo{display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;background:#fff;gap:2%;padding:8%}.mcard .duo img{width:46%;aspect-ratio:auto;object-fit:contain}.tg{display:inline-block;margin-top:16px;font-weight:800;color:var(--acc);text-decoration:none;border:1.5px solid var(--acc);border-radius:999px;padding:10px 18px}
+.note{font-size:13px;color:var(--muted);margin-top:12px;text-align:center}
+.ok{display:none;text-align:center;padding:30px 10px}
+.ok .big{font-size:54px}
+.ok h3{font-family:Unbounded;font-size:24px;margin:10px 0}
+.err{color:#D12F2F;font-size:14px;margin-top:8px;display:none}
+/* sticky */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(251,247,241,.95);box-shadow:0 -6px 24px rgba(0,0,0,.06);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;transform:translateY(110%);transition:transform .35s}
+.sticky.on{transform:none}
+.sticky .t{flex:1;font-size:13px;color:var(--muted);line-height:1.2}
+.sticky .t b{display:block;color:var(--text);font-family:Unbounded;font-size:18px}
+.sticky .btn{margin:0;width:auto;height:52px;padding:0 24px;font-size:14px}
+footer{padding:36px 0 20px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+footer a{color:var(--muted)}
+.fade{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.fade.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<div class="bar" id="bar"><span id="barText">Оплата при отриманні на Новій Пошті</span></div>
+
+<div class="wrap">
+<nav><a class="logo" href="/">HAPAY<span>.</span></a><a class="navcta" href="#order">Замовити</a></nav>
+
+<a class="back" href="/">‹ Всі товари</a>
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="media" id="media"><img id="mainImg" alt=""></div>
+    <div class="gbar" id="gbar"><button type="button" class="gnav prev" id="gPrev" aria-label="Попереднє фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button><div class="thumbs" id="thumbs"></div><button type="button" class="gnav next" id="gNext" aria-label="Наступне фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button></div>
+  </div>
+  <div>
+    <span class="badge" id="badge"></span>
+    <h1 class="U" id="title"></h1>
+    <p class="sub" id="subtitle"></p>
+    <div class="stars" id="rating"></div>
+    <div class="price"><span class="now"><span id="priceTop"></span> <span class="cur">грн</span></span><s class="old" id="oldTop"></s><span class="save" id="saveTop"></span></div>
+    <div class="promo" id="promo" style="display:none"><span id="promoText"></span><b id="promoTimer"></b></div>
+    <div class="stock" id="stock" style="display:none"><div class="st"><span id="stockText"></span></div><div class="sb"><i id="stockBar"></i></div></div>
+    <div class="ship"><span class="dot"></span><span id="shipText"></span></div>
+    <ul class="ticks" id="ticks"></ul>
+    <a class="btn" href="#order">Замовити зараз →</a>
+    <div class="trust">
+      <div><b><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></b>Оплата при отриманні</div>
+      <div><b><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></b>Нова Пошта 1–3 дні</div>
+      <div><b><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg></b>Повернення 14 днів</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- DESCRIPTION -->
+<section><div class="wrap" style="max-width:760px">
+  <div class="label">Опис</div>
+  <h2 class="U" id="descTitle">Про товар</h2>
+  <div class="desc" id="desc"></div>
+</div></section>
+
+<!-- SPECS -->
+<section><div class="wrap">
+  <div class="label">Характеристики</div>
+  <h2 class="U">Деталі</h2>
+  <table id="specs"></table>
+</div></section>
+
+<!-- REVIEWS (показуємо тільки реальні відгуки) -->
+<section id="revSec" style="display:none"><div class="wrap">
+  <div class="label">Відгуки</div>
+  <h2 class="U">Що кажуть покупці</h2>
+  <div class="grid c3" id="reviews"></div>
+</div></section>
+
+<!-- ORDER -->
+<section id="order"><div class="wrap" style="max-width:560px">
+  <div class="order">
+    <form id="form" novalidate>
+      <div class="label">Оформлення замовлення</div>
+      <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
+      <div class="p"><span id="priceOrder"></span> грн <s class="old" id="oldOrder" style="font-size:18px"></s></div>
+      <div class="ship" style="margin-top:6px"><span class="dot"></span><span id="shipText2"></span></div>
+      <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
+      <div class="field" id="packWrap" style="display:none"><label>Скільки беремо</label><div class="packs" id="packs"></div></div>
+      <div class="field" id="qtyWrap"><label>Кількість</label>
+        <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
+      </div>
+      <div class="field"><label for="comment">Коментар до замовлення <span style="opacity:.7">(необов'язково)</span></label><input id="comment" maxlength="200" placeholder="Напр.: потрібно 4 шт., зателефонуйте після 18:00"></div>
+      <div class="field"><label for="name">Ваше ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
+      <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required></div>
+      <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
+      <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
+      <div class="err" id="err">Перевір ім'я і номер телефону.</div>
+      <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
+      <p class="note">Ми зателефонуємо, щоб підтвердити замовлення (щодня 9:00–20:00). Передоплата не потрібна.</p>
+    </form>
+    <div class="ok" id="ok">
+      <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
+      <h3>Дякуємо!</h3>
+      <p style="color:var(--soft)">Замовлення прийнято.</p>
+      <ol class="steps"><li><b>1</b><span>Протягом 15 хвилин зателефонуємо (щодня 9:00–20:00) і уточнимо відділення Нової Пошти.</span></li><li><b>2</b><span>Відправимо в день підтвердження і надішлемо номер ТТН.</span></li><li><b>3</b><span>Огляньте товар на пошті й оплатіть тільки якщо все гаразд.</span></li></ol>
+      <a class="tg" href="https://t.me/hapay_support" target="_blank" rel="noopener">Питання? Напишіть у Telegram</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section><div class="wrap" style="max-width:760px">
+  <div class="label">Питання</div>
+  <h2 class="U">Часті питання</h2>
+  <details><summary>Чи потрібна передоплата?</summary><p>Ні. Оплата тільки при отриманні на Новій Пошті, після огляду товару.</p></details>
+  <details><summary>Скільки йде доставка?</summary><p>Відправляємо в день замовлення (якщо до 15:00), доставка зазвичай 1–2 дні по всій Україні.</p></details>
+  <details><summary>Що, якщо товар не підійде?</summary><p>Можна повернути протягом 14 днів відповідно до закону «Про захист прав споживачів».</p></details>
+  <details><summary>Скільки коштує доставка?</summary><p>За тарифами Нової Пошти, зазвичай 70–120 грн разом з комісією за переказ.</p></details>
+</div></section>
+
+<section id="moreSec"><div class="wrap">
+  <div class="label">Каталог</div>
+  <h2 class="U">Ще з Hapay</h2>
+  <div class="mgrid" id="more"></div>
+  <a class="allbtn" href="/">Всі товари</a>
+</div></section>
+
+<footer><div class="wrap">© <span id="yr"></span> Hapay · <a href="/">Всі товари</a> · <a href="/obmin-povernennya/">Обмін і повернення</a> · <a href="/privacy/">Конфіденційність</a> · <a href="/kontakty/">Контакти</a> · Підтримка: <a id="supportLink" href="#"></a></div></footer>
+
+<div class="sticky" id="sticky"><div class="t"><span id="stickyName"></span><b><span id="priceSticky"></span> грн</b></div><a class="btn" href="#order">Замовити</a></div>
+
+<script>
+/* =========================================================
+   КОНФІГ ТОВАРУ — міняємо тільки цей блок під кожен товар
+   ========================================================= */
+var PRODUCT = {
+ "id": "pb-aroimac-40000",
+ "title": "Павербанк Aroimac ORA503 на 40 000 мА·год",
+ "subtitle": "40 000 мА·год, швидка зарядка 22,5 Вт, 4 USB і дисплей заряду. Білий корпус.",
+ "price": 1549,
+ "packs": [
+  {
+   "n": 1,
+   "price": 1549,
+   "label": "1 шт",
+   "note": ""
+  },
+  {
+   "n": 2,
+   "price": 2999,
+   "label": "2 шт",
+   "note": "Вигідніше на 99 грн"
+  }
+ ],
+ "badge": "Велика ємність",
+ "rating": "",
+ "images": [
+  "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734183419_belyj-power-bank.jpg",
+  "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734167937_belyj-power-bank.jpg",
+  "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734167939_belyj-power-bank.jpg",
+  "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734167941_belyj-power-bank.jpg",
+  "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734167942_belyj-power-bank.jpg",
+  "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734167944_belyj-power-bank.jpg"
+ ],
+ "video": "",
+ "ticks": [
+  "40 000 мА·год",
+  "Швидка зарядка 22,5 Вт (QC 3.0)",
+  "4 USB-виходи + дисплей заряду"
+ ],
+ "descTitle": "Великий павербанк на кожен день",
+ "description": [
+  "Aroimac ORA503 — павербанк на 40 000 мА·год зі швидкою зарядкою 22,5 Вт і QC 3.0.",
+  {
+   "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734167937_belyj-power-bank.jpg"
+  },
+  "Чотири USB-виходи, цифровий дисплей заряду та LED-підсвітка.",
+  "Літій-полімерний акумулятор, білий корпус."
+ ],
+ "specs": [
+  [
+   "Модель",
+   "Aroimac ORA503"
+  ],
+  [
+   "Ємність",
+   "40 000 мА·год"
+  ],
+  [
+   "Швидка зарядка",
+   "22,5 Вт, QC 3.0"
+  ],
+  [
+   "Виходи",
+   "4 × USB"
+  ],
+  [
+   "Індикація",
+   "цифровий дисплей"
+  ],
+  [
+   "Колір",
+   "білий"
+  ]
+ ],
+ "variants": [],
+ "reviews": [],
+ "support": "@hapay_support",
+ "cutoffHour": 15,
+ "oldPrice": 0,
+ "promoUntil": "",
+ "stockLeft": 0,
+ "bump": {
+  "title": "Ліхтар на сонячній батареї",
+  "price": 450,
+  "full": 499,
+  "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582969_ruchnoj-fonar-s.jpg"
+ },
+ "combo": null
+};
+var MORE = [{"id": "lihtar", "title": "Ліхтар із сонячною панеллю та павербанком", "price": 499, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582969_ruchnoj-fonar-s.jpg"}, {"id": "powerbank-solar", "title": "Павербанк на сонячній батареї з LED-лампою", "price": 449, "img": "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4243261892_power-bank-30000mah.jpg"}, {"id": "pb-awei-100000", "title": "Павербанк Awei J86A на 100 000 мА·год з дисплеєм", "price": 1999, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/02/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_viber_2026-02-02_10-23-33-670.png"}, {"id": "pb-xp51-70000", "title": "Павербанк XP-51 на 70 000 мА·год з LED-лампою", "price": 1899, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/02/7081137786_moschnyj-power-bank.jpg"}, {"id": "pb-aroimac-60000", "title": "Павербанк Aroimac ARO546 на 60 000 мА·год", "price": 1999, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734237049_power-bank-aroimac.jpg"}, {"id": "pb-aroimac-50000", "title": "Павербанк Aroimac ARO428 на 50 000 мА·год", "price": 1749, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/09/7734207648_power-bank-aroimac.jpg"}, {"id": "nalobnyi-lihtar", "title": "Налобний ліхтар Bailong з акумуляторами та зумом", "price": 399, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/08/6175815711_nalobnyj-fonar-led.jpg"}, {"id": "kompresor-avto", "title": "Автомобільний компресор з манометром, 12 В", "price": 399, "img": "https://www.aveopt.com.ua/wp-content/uploads/2019/12/1853489756_avtomobilnyj-kompressor-air.jpg"}, {"id": "bokserska-grusha", "title": "Боксерська груша на стійці з реакційним м'ячем", "price": 699, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7667081743_bokserskaya-grusha-s.jpg"}, {"id": "nabir-nozhiv", "title": "Набір кухонних ножів 13 в 1 з ножицями", "price": 799, "img": "https://www.aveopt.com.ua/wp-content/uploads/2019/12/1853491012_nabor-professionalnyh-kuhonnyh.jpg"}, {"id": "nabir", "title": "Набір на відключення: ліхтар + павербанк", "price": 849, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582969_ruchnoj-fonar-s.jpg", "img2": "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4243261892_power-bank-30000mah.jpg"}];
+/* Pixel, Google Ads і прийом заявок — в /assets/hapay.js (один на весь сайт) */
+
+/* ================= рендер ================= */
+var P = PRODUCT, $ = function(id){return document.getElementById(id)};
+document.title = P.title + " — Hapay";
+$("title").textContent = P.title; $("orderTitle").textContent = P.title; $("stickyName").textContent = P.title;
+$("subtitle").textContent = P.subtitle;
+["priceTop","priceOrder","priceSticky"].forEach(function(i){$(i).textContent = P.price});
+if (P.badge) $("badge").textContent = P.badge; else $("badge").remove();
+if (P.rating) $("rating").innerHTML = "<b>★★★★★</b> " + P.rating;
+if (P.video){ $("mainImg").outerHTML = '<video src="'+P.video+'" autoplay muted loop playsinline></video>'; }
+else { $("mainImg").src = P.images[0]; $("mainImg").alt = P.title; }
+if (P.combo){var cb=document.createElement("div");cb.className="combo";cb.id="combo";cb.innerHTML='<img alt=""><span>+</span><img alt="">';cb.querySelectorAll("img").forEach(function(x,k){x.src=P.combo[k]});$("media").appendChild(cb);$("mainImg").style.visibility="hidden";}
+var gi=0;
+function showImg(i){var n=P.images.length;gi=(i+n)%n;var m=$("mainImg");if(m)m.src=P.images[gi];if(P.combo){$("combo").style.display=gi===0?"flex":"none";m.style.visibility=gi===0?"hidden":"visible";}
+  document.querySelectorAll(".thumbs img").forEach(function(x,k){x.className=k===gi?"on":""});
+  var t=document.querySelectorAll(".thumbs img")[gi];if(t&&t.scrollIntoView)t.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});}
+P.images.forEach(function(src,i){var im=document.createElement("img");im.src=src;im.alt="";im.loading=i?"lazy":"eager";if(i===0)im.className="on";
+  im.onclick=function(){showImg(i)};$("thumbs").appendChild(im)});
+if(P.video||P.images.length<2){$("gPrev").style.display="none";$("gNext").style.display="none"}
+$("gPrev").onclick=function(){showImg(gi-1)};$("gNext").onclick=function(){showImg(gi+1)};
+(function(){var x0=null;var md=$("media");md.addEventListener("touchstart",function(e){x0=e.touches[0].clientX},{passive:true});
+  md.addEventListener("touchend",function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)showImg(gi+(dx<0?1:-1));x0=null},{passive:true});})();
+P.ticks.forEach(function(t){var li=document.createElement("li");li.textContent=t;$("ticks").appendChild(li)});
+$("descTitle").textContent = P.descTitle || "Про товар";
+P.description.forEach(function(x){var el;if(typeof x==="string"){el=document.createElement("p");el.textContent=x}else if(x.img){el=document.createElement("img");el.src=x.img;el.alt=P.title;el.loading="lazy"}if(el)$("desc").appendChild(el)});
+P.specs.forEach(function(s){var tr=document.createElement("tr");tr.innerHTML="<td></td><td></td>";tr.children[0].textContent=s[0];tr.children[1].textContent=s[1];$("specs").appendChild(tr)});
+if (P.variants.length){$("variantWrap").style.display="block";P.variants.forEach(function(v){var o=document.createElement("option");o.textContent=v;$("variant").appendChild(o)})}
+if (P.reviews.length){$("revSec").style.display="block";P.reviews.forEach(function(r){var d=document.createElement("div");d.className="card rev fade";d.innerHTML='<div class="who"><b></b><span>★★★★★</span></div><p></p>';d.querySelector("b").textContent=r.n;d.querySelector("p").textContent=r.t;$("reviews").appendChild(d)})}
+$("supportLink").textContent = P.support; $("supportLink").href = "https://t.me/" + P.support.replace("@","");
+$("yr").textContent = new Date().getFullYear();
+
+/* ---------- FOMO ---------- */
+var DAYS=["неділю","понеділок","вівторок","середу","четвер","п'ятницю","суботу"];
+var MON=["січня","лютого","березня","квітня","травня","червня","липня","серпня","вересня","жовтня","листопада","грудня"];
+function nextWork(d){d=new Date(d);do{d.setDate(d.getDate()+1)}while(d.getDay()===0);return d}
+function fmt(d){return DAYS[d.getDay()]+", "+d.getDate()+" "+MON[d.getMonth()]}
+function pad(n){return (n<10?"0":"")+n}
+function tickFomo(){
+  var now=new Date(), cut=new Date(now); cut.setHours(P.cutoffHour,0,0,0);
+  var today = now.getDay()!==0 && now<cut;
+  var ship = today? now : nextWork(now);
+  var arrive = nextWork(ship);
+  if (today){var s=Math.floor((cut-now)/1000);
+    $("barText").innerHTML="Замов протягом <b>"+pad(Math.floor(s/3600))+":"+pad(Math.floor(s%3600/60))+":"+pad(s%60)+"</b> — відправимо сьогодні";
+  } else { var tm=new Date(now);tm.setDate(tm.getDate()+1);$("barText").textContent="Відправка "+(ship.toDateString()===tm.toDateString()?"завтра":"у "+fmt(ship))+" · Оплата при отриманні"; }
+  var txt="Отримаєш впродовж 1–2 днів після відправки";
+  $("shipText").textContent=txt; $("shipText2").textContent=txt;
+  if (P.oldPrice>P.price && P.promoUntil){var end=new Date(P.promoUntil), r=Math.floor((end-now)/1000);
+    if(r>0){$("promo").style.display="flex";$("promoText").textContent="Акційна ціна ще:";
+      var dd=Math.floor(r/86400);$("promoTimer").textContent=(dd?dd+" д ":"")+pad(Math.floor(r%86400/3600))+":"+pad(Math.floor(r%3600/60))+":"+pad(r%60);}
+    else {$("promo").style.display="none"}}
+}
+if (P.oldPrice>P.price){["oldTop","oldOrder"].forEach(function(i){$(i).textContent=P.oldPrice+" грн"});$("saveTop").textContent="−"+Math.round((1-P.price/P.oldPrice)*100)+"%";}
+if (P.stockLeft>0){$("stock").style.display="block";$("stockText").innerHTML="Залишилось <b>"+P.stockLeft+" шт.</b> на складі";$("stockBar").style.width=Math.max(8,Math.min(100,P.stockLeft*4))+"%";}
+tickFomo(); setInterval(tickFomo,1000);
+
+/* кількість і сума */
+var q=1, pk=0, bumpOn=false; function curPrice(){return (P.packs?P.packs[pk].price:q*P.price)+(bumpOn&&P.bump?P.bump.price:0)}
+function upd(){$("qty").textContent=q;$("total").textContent=curPrice()}
+if (P.packs){$("packWrap").style.display="block";$("qtyWrap").style.display="none";
+  P.packs.forEach(function(p,i){var d=document.createElement("div");d.className="pack"+(i===0?" on":"");d.innerHTML='<span class="r"></span><span class="l"><b></b><span></span></span><span class="pp"></span>';
+    d.querySelector("b").textContent=p.label;d.querySelector(".l span").textContent=p.note||"";d.querySelector(".pp").textContent=p.price+" грн";
+    d.onclick=function(){pk=i;document.querySelectorAll(".pack").forEach(function(x){x.classList.remove("on")});d.classList.add("on");upd()};$("packs").appendChild(d)});}
+if (P.bump){$("bump").style.display="flex";$("bumpImg").src=P.bump.img;$("bumpTitle").textContent="+ "+P.bump.title+" за "+P.bump.price+" грн";$("bumpNote").innerHTML="Окремо <s>"+P.bump.full+" грн</s> · додати до замовлення";
+  $("bump").onclick=function(){bumpOn=!bumpOn;$("bump").classList.toggle("on",bumpOn);upd()};}
+$("minus").onclick=function(){if(q>1){q--;upd()}}; $("plus").onclick=function(){if(q<9){q++;upd()}}; upd();
+
+/* маска телефону */
+$("phone").addEventListener("focus",function(){if(!this.value)this.value="+380 "});
+
+/* події для реклами */
+var EV={id:P.id,name:P.title,value:P.price};
+HAPAY.track("ViewContent",EV);
+document.querySelectorAll('a[href="#order"]').forEach(function(a){a.addEventListener("click",function(){HAPAY.track("InitiateCheckout",EV,true)})});
+["name","phone"].forEach(function(i){$(i).addEventListener("focus",function(){HAPAY.track("InitiateCheckout",EV,true)})});
+
+/* відправка заявки */
+$("form").addEventListener("submit",function(e){
+  e.preventDefault();
+  var name=$("name").value.trim(), pd=$("phone").value.replace(/\D/g,"");
+  while(pd.indexOf("380380")===0)pd=pd.slice(3);
+  if(pd.length===10&&pd[0]==="0")pd="38"+pd;
+  if(pd.length===9)pd="380"+pd;
+  if(pd.length===13&&pd.indexOf("3800")===0)pd="380"+pd.slice(4);
+  var phone="+"+pd;
+  if(name.length<2 || phone.replace(/\D/g,"").length<12){$("err").style.display="block";return}
+  $("err").style.display="none"; $("submit").disabled=true; $("submit").textContent="Надсилаємо…";
+  var pkObj=P.packs?P.packs[pk]:null;
+  var data={product_id:P.id,product:P.title,price:pkObj?pkObj.price:P.price,qty:pkObj?pkObj.n:q,total:curPrice(),variant:[pkObj?pkObj.label:"",$("variant").value||"",(bumpOn&&P.bump?"+ "+P.bump.title+" ("+P.bump.price+" грн)":""),($("comment").value.trim()?"Коментар: "+$("comment").value.trim():"")].filter(Boolean).join(" · "),name:name,phone:phone};
+  HAPAY.order(data,function(){$("form").style.display="none";$("ok").style.display="block";
+    HAPAY.track("Lead",{id:P.id,name:P.title,value:data.total});});
+});
+
+/* sticky + анімації */
+var sticky=$("sticky"), orderEl=$("order");
+window.addEventListener("scroll",function(){var r=orderEl.getBoundingClientRect();sticky.classList.toggle("on",scrollY>500 && (r.top>innerHeight||r.bottom<0))},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.15});
+document.querySelectorAll(".fade").forEach(function(el){io.observe(el)});
+</script>
+<script>(function(){var m=document.getElementById("more");if(!m||!window.MORE||!MORE.length){var x=document.getElementById("moreSec");if(x)x.remove();return}MORE.forEach(function(p){var a=document.createElement("a");a.className="mcard";a.href="/"+p.id+"/";var im;if(p.img2){im=document.createElement("div");im.className="duo";im.innerHTML='<img alt="" loading="lazy"><img alt="" loading="lazy">';im.children[0].src=p.img;im.children[1].src=p.img2}else{im=document.createElement("img");im.src=p.img;im.alt=p.title;im.loading="lazy"}var d=document.createElement("div");d.textContent=p.title;var b=document.createElement("b");b.textContent=p.price+" грн";d.appendChild(b);a.appendChild(im);a.appendChild(d);m.appendChild(a)})})();</script>
+</body>
+</html>
