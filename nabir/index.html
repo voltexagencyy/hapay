@@ -126,6 +126,7 @@ footer{padding:36px 0 20px;color:var(--muted);font-size:13px;border-top:1px soli
 footer a{color:var(--muted)}
 .fade{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
 .fade.in{opacity:1;transform:none}
+.cmt{margin:4px 0 14px}.cmt summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}.cmt summary::-webkit-details-marker{display:none}.cmt summary:before{content:"+ "}.cmt input{margin-top:8px;width:100%;height:52px;font-size:16px;border-radius:16px;border:1px solid var(--line);background:var(--field);color:var(--text);padding:0 16px;font-family:inherit}
 </style>
 </head>
 <body>
@@ -196,14 +197,14 @@ footer a{color:var(--muted)}
       <div class="field" id="qtyWrap"><label>Кількість</label>
         <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
       </div>
-      <div class="field"><label for="comment">Коментар до замовлення <span style="opacity:.7">(необов'язково)</span></label><input id="comment" maxlength="200" placeholder="Напр.: потрібно 4 шт., зателефонуйте після 18:00"></div>
-      <div class="field"><label for="name">Ваше ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
+      <div class="field"><label for="name">Ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
       <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required></div>
+      <details class="cmt"><summary>Додати коментар</summary><input id="comment" maxlength="200" placeholder="Напр.: зателефонуйте після 18:00"></details>
       <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
       <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
       <div class="err" id="err">Перевір ім'я і номер телефону.</div>
       <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
-      <p class="note">Ми зателефонуємо, щоб підтвердити замовлення (щодня 9:00–20:00). Передоплата не потрібна.</p>
+      <p class="note">Тільки ім'я і телефон. Ми передзвонимо й уточнимо відділення Нової Пошти. Передоплата не потрібна.</p>
     </form>
     <div class="ok" id="ok">
       <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
@@ -262,12 +263,12 @@ var PRODUCT = {
  "badge": "Вигідніше на 99 грн",
  "rating": "",
  "images": [
-  "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582969_ruchnoj-fonar-s.jpg",
-  "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4243261892_power-bank-30000mah.jpg",
-  "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655583202_ruchnoj-fonar-s.jpg",
-  "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4246722404_power-bank-30000mah.jpg",
-  "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655583055_ruchnoj-fonar-s.jpg",
-  "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4246722403_power-bank-30000mah.jpg"
+  "/img/p/7a0cb22040.jpg",
+  "/img/solar-pb-1.jpg",
+  "/img/p/0c530aec99.jpg",
+  "/img/solar-pb-hand.jpg",
+  "/img/p/39e28d095f.jpg",
+  "/img/solar-pb-blue.jpg"
  ],
  "video": "",
  "ticks": [
@@ -279,11 +280,11 @@ var PRODUCT = {
  "description": [
   "Ліхтар DIZ-2209-3 з LED-панеллю та прожектором. Заряджається від вбудованої сонячної панелі або USB. Вдень на підвіконні, ввечері — світло на всю кімнату.",
   {
-   "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655583202_ruchnoj-fonar-s.jpg"
+   "img": "/img/p/0c530aec99.jpg"
   },
   "Павербанк із сонячною панеллю: два USB-виходи для телефонів і LED-лампа на 20 світлодіодів на звороті. Заряджається від USB або від сонця.",
   {
-   "img": "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4246722404_power-bank-30000mah.jpg"
+   "img": "/img/solar-pb-hand.jpg"
   },
   "Разом це закриває дві головні проблеми вечора без світла: темряву і розряджений телефон."
  ],
@@ -314,11 +315,11 @@ var PRODUCT = {
  "stockLeft": 0,
  "bump": null,
  "combo": [
-  "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582969_ruchnoj-fonar-s.jpg",
-  "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4243261892_power-bank-30000mah.jpg"
+  "/img/p/7a0cb22040.jpg",
+  "/img/solar-pb-1.jpg"
  ]
 };
-var MORE = [{"id": "lihtar", "title": "Ліхтар із сонячною панеллю та павербанком", "price": 499, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7655582969_ruchnoj-fonar-s.jpg"}, {"id": "powerbank-solar", "title": "Павербанк на сонячній батареї з LED-лампою", "price": 449, "img": "https://www.aveopt.com.ua/wp-content/uploads/2023/02/4243261892_power-bank-30000mah.jpg"}, {"id": "nalobnyi-lihtar", "title": "Налобний ліхтар Bailong з акумуляторами та зумом", "price": 399, "img": "https://www.aveopt.com.ua/wp-content/uploads/2024/08/6175815711_nalobnyj-fonar-led.jpg"}, {"id": "kompresor-avto", "title": "Автомобільний компресор з манометром, 12 В", "price": 399, "img": "https://www.aveopt.com.ua/wp-content/uploads/2019/12/1853489756_avtomobilnyj-kompressor-air.jpg"}, {"id": "bokserska-grusha", "title": "Боксерська груша на стійці з реакційним м'ячем", "price": 699, "img": "https://www.aveopt.com.ua/wp-content/uploads/2026/08/7667081743_bokserskaya-grusha-s.jpg"}, {"id": "nabir-nozhiv", "title": "Набір кухонних ножів 13 в 1 з ножицями", "price": 799, "img": "https://www.aveopt.com.ua/wp-content/uploads/2019/12/1853491012_nabor-professionalnyh-kuhonnyh.jpg"}];
+var MORE = [{"id": "powerbank-solar", "title": "Павербанк на сонячній батареї з LED-лампою", "price": 449, "img": "/img/solar-pb-1.jpg"}, {"id": "lihtar", "title": "Ліхтар із сонячною панеллю та павербанком", "price": 499, "img": "/img/p/7a0cb22040.jpg"}, {"id": "pb-awei-100000", "title": "Павербанк Awei J86A на 100 000 мА·год з дисплеєм", "price": 1999, "img": "/img/p/d388e58167.jpg"}, {"id": "pb-xp51-70000", "title": "Павербанк XP-51 на 70 000 мА·год з LED-лампою", "price": 1899, "img": "/img/p/f5438b12da.jpg"}, {"id": "pb-aroimac-60000", "title": "Павербанк Aroimac ARO546 на 60 000 мА·год", "price": 1999, "img": "/img/p/264728e584.jpg"}, {"id": "pb-aroimac-50000", "title": "Павербанк Aroimac ARO428 на 50 000 мА·год", "price": 1749, "img": "/img/p/f57d57cac9.jpg"}, {"id": "pb-aroimac-40000", "title": "Павербанк Aroimac ORA503 на 40 000 мА·год", "price": 1549, "img": "/img/p/dd824d379f.jpg"}, {"id": "nalobnyi-lihtar", "title": "Налобний ліхтар Bailong з акумуляторами та зумом", "price": 399, "img": "/img/p/ab66027397.jpg"}, {"id": "kompresor-avto", "title": "Автомобільний компресор з манометром, 12 В", "price": 399, "img": "/img/p/f5e32401f2.jpg"}, {"id": "bokserska-grusha", "title": "Боксерська груша на стійці з реакційним м'ячем", "price": 699, "img": "/img/p/a0e564ea41.jpg"}];
 /* Pixel, Google Ads і прийом заявок — в /assets/hapay.js (один на весь сайт) */
 
 /* ================= рендер ================= */
