@@ -128,6 +128,7 @@ footer a{color:var(--muted)}
 .fade.in{opacity:1;transform:none}
 .cmt{margin:4px 0 14px}.cmt summary{cursor:pointer;color:var(--soft);font-size:14px;font-weight:700;list-style:none}.cmt summary::-webkit-details-marker{display:none}.cmt summary:before{content:"+ "}.cmt input{margin-top:8px;width:100%;height:52px;font-size:16px;border-radius:16px;border:1px solid var(--line);background:var(--field);color:var(--text);padding:0 16px;font-family:inherit}
 .how{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px}.how li{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px}.how b{flex:none;width:32px;height:32px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}.faq details{border-top:1px solid var(--line);padding:14px 0}.faq summary{cursor:pointer;font-weight:800;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:"+";float:right;color:var(--acc);font-weight:800}.faq details[open] summary:after{content:"−"}.faq p{margin:8px 0 0;color:var(--soft)}
+.tg2{display:flex;align-items:center;justify-content:center;height:52px;margin-top:10px;border-radius:999px;border:2px solid var(--acc);color:var(--acc);font-weight:800;text-decoration:none}
 </style>
 </head>
 <body>
@@ -137,7 +138,6 @@ footer a{color:var(--muted)}
 <div class="wrap">
 <nav><a class="logo" href="/">HAPAY<span>.</span></a><a class="navcta" href="#order">Замовити</a></nav>
 
-<a class="back" href="/">‹ Всі товари</a>
 <!-- HERO -->
 <div class="hero">
   <div>
@@ -155,6 +155,7 @@ footer a{color:var(--muted)}
     <div class="ship"><span class="dot"></span><span id="shipText"></span></div>
     <ul class="ticks" id="ticks"></ul>
     <a class="btn" href="#order">Замовити зараз →</a>
+    <a class="tg2" href="https://t.me/hapay_support?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BC%D0%BE%D0%B2%D0%B8%D1%82%D0%B8%20%D0%BF%D0%B0%D0%B2%D0%B5%D1%80%D0%B1%D0%B0%D0%BD%D0%BA%20Awei%20100%20000" target="_blank" rel="noopener">Замовити в Telegram</a>
     <div class="trust">
       <div><b><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg></b>Оплата при отриманні</div>
       <div><b><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></b>Нова Пошта 1–3 дні</div>
@@ -163,6 +164,38 @@ footer a{color:var(--muted)}
   </div>
 </div>
 </div>
+
+<!-- ORDER -->
+<section id="order"><div class="wrap" style="max-width:560px">
+  <div class="order">
+    <form id="form" novalidate>
+      <div class="label">Оформлення замовлення</div>
+      <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
+      <div class="p"><span id="priceOrder"></span> грн <s class="old" id="oldOrder" style="font-size:18px"></s></div>
+      <div class="ship" style="margin-top:6px"><span class="dot"></span><span id="shipText2"></span></div>
+      <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
+      <div class="field" id="packWrap" style="display:none"><label>Скільки беремо</label><div class="packs" id="packs"></div></div>
+      <div class="field" id="qtyWrap"><label>Кількість</label>
+        <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
+      </div>
+      <div class="field"><label for="name">Ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
+      <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="067 123 45 67" required></div>
+      <details class="cmt"><summary>Додати коментар</summary><input id="comment" maxlength="200" placeholder="Напр.: зателефонуйте після 18:00"></details>
+      <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
+      <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
+      <div class="err" id="err">Перевір ім'я і номер телефону.</div>
+      <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
+      <p class="note">Тільки ім'я і телефон. Ми передзвонимо й уточнимо відділення Нової Пошти. Передоплата не потрібна.</p>
+    </form>
+    <div class="ok" id="ok">
+      <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
+      <h3>Дякуємо!</h3>
+      <p style="color:var(--soft)">Замовлення прийнято.</p>
+      <ol class="steps"><li><b>1</b><span>Протягом 15 хвилин зателефонуємо (щодня 9:00–20:00) і уточнимо відділення Нової Пошти.</span></li><li><b>2</b><span>Відправимо в день підтвердження і надішлемо номер ТТН.</span></li><li><b>3</b><span>Огляньте товар на пошті й оплатіть тільки якщо все гаразд.</span></li></ol>
+      <a class="tg" href="https://t.me/hapay_support" target="_blank" rel="noopener">Питання? Напишіть у Telegram</a>
+    </div>
+  </div>
+</div></section>
 
 <!-- DESCRIPTION -->
 <section><div class="wrap" style="max-width:760px">
@@ -198,38 +231,6 @@ footer a{color:var(--muted)}
   </div>
 </div></section>
 
-<!-- ORDER -->
-<section id="order"><div class="wrap" style="max-width:560px">
-  <div class="order">
-    <form id="form" novalidate>
-      <div class="label">Оформлення замовлення</div>
-      <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
-      <div class="p"><span id="priceOrder"></span> грн <s class="old" id="oldOrder" style="font-size:18px"></s></div>
-      <div class="ship" style="margin-top:6px"><span class="dot"></span><span id="shipText2"></span></div>
-      <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
-      <div class="field" id="packWrap" style="display:none"><label>Скільки беремо</label><div class="packs" id="packs"></div></div>
-      <div class="field" id="qtyWrap"><label>Кількість</label>
-        <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
-      </div>
-      <div class="field"><label for="name">Ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
-      <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required></div>
-      <details class="cmt"><summary>Додати коментар</summary><input id="comment" maxlength="200" placeholder="Напр.: зателефонуйте після 18:00"></details>
-      <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
-      <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
-      <div class="err" id="err">Перевір ім'я і номер телефону.</div>
-      <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
-      <p class="note">Тільки ім'я і телефон. Ми передзвонимо й уточнимо відділення Нової Пошти. Передоплата не потрібна.</p>
-    </form>
-    <div class="ok" id="ok">
-      <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
-      <h3>Дякуємо!</h3>
-      <p style="color:var(--soft)">Замовлення прийнято.</p>
-      <ol class="steps"><li><b>1</b><span>Протягом 15 хвилин зателефонуємо (щодня 9:00–20:00) і уточнимо відділення Нової Пошти.</span></li><li><b>2</b><span>Відправимо в день підтвердження і надішлемо номер ТТН.</span></li><li><b>3</b><span>Огляньте товар на пошті й оплатіть тільки якщо все гаразд.</span></li></ol>
-      <a class="tg" href="https://t.me/hapay_support" target="_blank" rel="noopener">Питання? Напишіть у Telegram</a>
-    </div>
-  </div>
-</div></section>
-
 <!-- FAQ -->
 <section><div class="wrap" style="max-width:760px">
   <div class="label">Питання</div>
@@ -240,14 +241,14 @@ footer a{color:var(--muted)}
   <details><summary>Скільки коштує доставка?</summary><p>За тарифами Нової Пошти, зазвичай 70–120 грн разом з комісією за переказ.</p></details>
 </div></section>
 
-<section id="moreSec"><div class="wrap">
+<section id="moreSec" style="display:none"><div class="wrap">
   <div class="label">Каталог</div>
   <h2 class="U">Ще з Hapay</h2>
   <div class="mgrid" id="more"></div>
   <a class="allbtn" href="/">Всі товари</a>
 </div></section>
 
-<footer><div class="wrap">© <span id="yr"></span> Hapay · <a href="/">Всі товари</a> · <a href="/obmin-povernennya/">Обмін і повернення</a> · <a href="/privacy/">Конфіденційність</a> · <a href="/kontakty/">Контакти</a> · Підтримка: <a id="supportLink" href="#"></a></div></footer>
+<footer><div class="wrap">© <span id="yr"></span> Hapay · <a href="/obmin-povernennya/">Обмін і повернення</a> · <a href="/privacy/">Конфіденційність</a> · <a href="/kontakty/">Контакти</a> · Підтримка: <a id="supportLink" href="#"></a></div></footer>
 
 <div class="sticky" id="sticky"><div class="t"><span id="stickyName"></span><b><span id="priceSticky"></span> грн</b></div><a class="btn" href="#order">Замовити</a></div>
 
@@ -336,7 +337,7 @@ var PRODUCT = {
  },
  "combo": null
 };
-var MORE = [{"id": "pb-xp51-70000", "title": "Павербанк XP-51 на 70 000 мА·год з LED-лампою", "price": 2299, "img": "/img/p/f5438b12da.jpg"}, {"id": "masazhnyi-pistolet", "title": "Масажний пістолет з 6 насадками, складна ручка", "price": 999, "img": "/img/p/mg-1.jpg"}, {"id": "powerbank-solar", "title": "Павербанк на сонячній батареї з LED-лампою", "price": 449, "img": "/img/solar-pb-1.jpg"}, {"id": "lihtar", "title": "Ліхтар із сонячною панеллю та павербанком", "price": 499, "img": "/img/p/7a0cb22040.jpg"}, {"id": "pb-aroimac-60000", "title": "Павербанк Aroimac ARO546 на 60 000 мА·год", "price": 1999, "img": "/img/p/264728e584.jpg"}, {"id": "pb-aroimac-50000", "title": "Павербанк Aroimac ARO428 на 50 000 мА·год", "price": 1749, "img": "/img/p/f57d57cac9.jpg"}, {"id": "pb-aroimac-40000", "title": "Павербанк Aroimac ORA503 на 40 000 мА·год", "price": 1549, "img": "/img/p/dd824d379f.jpg"}, {"id": "nalobnyi-lihtar", "title": "Налобний ліхтар Bailong з акумуляторами та зумом", "price": 399, "img": "/img/p/ab66027397.jpg"}, {"id": "nabir", "title": "Набір на відключення: ліхтар + павербанк", "price": 849, "img": "/img/p/7a0cb22040.jpg", "img2": "/img/solar-pb-1.jpg"}];
+var MORE = [];
 /* Pixel, Google Ads і прийом заявок — в /assets/hapay.js (один на весь сайт) */
 
 /* ================= рендер ================= */
@@ -406,7 +407,7 @@ if (P.bump){$("bump").style.display="flex";$("bumpImg").src=P.bump.img;$("bumpTi
 $("minus").onclick=function(){if(q>1){q--;upd()}}; $("plus").onclick=function(){if(q<9){q++;upd()}}; upd();
 
 /* маска телефону */
-$("phone").addEventListener("focus",function(){if(!this.value)this.value="+380 "});
+
 
 /* події для реклами */
 var EV={id:P.id,name:P.title,value:P.price};
