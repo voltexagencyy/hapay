@@ -165,6 +165,38 @@ footer a{color:var(--muted)}
 </div>
 </div>
 
+<!-- ORDER -->
+<section id="order"><div class="wrap" style="max-width:560px">
+  <div class="order">
+    <form id="form" novalidate>
+      <div class="label">Оформлення замовлення</div>
+      <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
+      <div class="p"><span id="priceOrder"></span> грн <s class="old" id="oldOrder" style="font-size:18px"></s></div>
+      <div class="ship" style="margin-top:6px"><span class="dot"></span><span id="shipText2"></span></div>
+      <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
+      <div class="field" id="packWrap" style="display:none"><label>Скільки беремо</label><div class="packs" id="packs"></div></div>
+      <div class="field" id="qtyWrap"><label>Кількість</label>
+        <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
+      </div>
+      <div class="field"><label for="name">Ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
+      <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="067 123 45 67" required></div>
+      <details class="cmt"><summary>Додати коментар</summary><input id="comment" maxlength="200" placeholder="Напр.: зателефонуйте після 18:00"></details>
+      <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
+      <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
+      <div class="err" id="err">Перевір ім'я і номер телефону.</div>
+      <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
+      <p class="note">Тільки ім'я і телефон. Ми передзвонимо й уточнимо відділення Нової Пошти. Передоплата не потрібна.</p>
+    </form>
+    <div class="ok" id="ok">
+      <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
+      <h3>Дякуємо!</h3>
+      <p style="color:var(--soft)">Замовлення прийнято.</p>
+      <ol class="steps"><li><b>1</b><span>Протягом 15 хвилин зателефонуємо (щодня 9:00–20:00) і уточнимо відділення Нової Пошти.</span></li><li><b>2</b><span>Відправимо в день підтвердження і надішлемо номер ТТН.</span></li><li><b>3</b><span>Огляньте товар на пошті й оплатіть тільки якщо все гаразд.</span></li></ol>
+      <a class="tg" href="https://t.me/hapay_support" target="_blank" rel="noopener">Питання? Напишіть у Telegram</a>
+    </div>
+  </div>
+</div></section>
+
 <!-- DESCRIPTION -->
 <section><div class="wrap" style="max-width:760px">
   <div class="label">Опис</div>
@@ -199,38 +231,6 @@ footer a{color:var(--muted)}
   </div>
 </div></section>
 
-<!-- ORDER -->
-<section id="order"><div class="wrap" style="max-width:560px">
-  <div class="order">
-    <form id="form" novalidate>
-      <div class="label">Оформлення замовлення</div>
-      <div class="U" style="font-weight:900;font-size:20px" id="orderTitle"></div>
-      <div class="p"><span id="priceOrder"></span> грн <s class="old" id="oldOrder" style="font-size:18px"></s></div>
-      <div class="ship" style="margin-top:6px"><span class="dot"></span><span id="shipText2"></span></div>
-      <div class="field" id="variantWrap" style="display:none"><label for="variant">Варіант</label><select id="variant"></select></div>
-      <div class="field" id="packWrap" style="display:none"><label>Скільки беремо</label><div class="packs" id="packs"></div></div>
-      <div class="field" id="qtyWrap"><label>Кількість</label>
-        <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
-      </div>
-      <div class="field"><label for="name">Ім'я</label><input id="name" autocomplete="name" placeholder="Олена" required></div>
-      <div class="field"><label for="phone">Телефон</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380 __ ___ __ __" required></div>
-      <details class="cmt"><summary>Додати коментар</summary><input id="comment" maxlength="200" placeholder="Напр.: зателефонуйте після 18:00"></details>
-      <div class="bump" id="bump" style="display:none"><span class="bx"></span><img id="bumpImg" alt=""><span class="bt"><b id="bumpTitle"></b><span id="bumpNote"></span></span></div>
-      <div class="total"><span>Разом:</span><span><span id="total"></span> грн</span></div>
-      <div class="err" id="err">Перевір ім'я і номер телефону.</div>
-      <button class="btn" type="submit" id="submit">Замовити з оплатою при отриманні</button>
-      <p class="note">Тільки ім'я і телефон. Ми передзвонимо й уточнимо відділення Нової Пошти. Передоплата не потрібна.</p>
-    </form>
-    <div class="ok" id="ok">
-      <div class="big"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--acc)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.5 3 3 6-6.5"/></svg></div>
-      <h3>Дякуємо!</h3>
-      <p style="color:var(--soft)">Замовлення прийнято.</p>
-      <ol class="steps"><li><b>1</b><span>Протягом 15 хвилин зателефонуємо (щодня 9:00–20:00) і уточнимо відділення Нової Пошти.</span></li><li><b>2</b><span>Відправимо в день підтвердження і надішлемо номер ТТН.</span></li><li><b>3</b><span>Огляньте товар на пошті й оплатіть тільки якщо все гаразд.</span></li></ol>
-      <a class="tg" href="https://t.me/hapay_support" target="_blank" rel="noopener">Питання? Напишіть у Telegram</a>
-    </div>
-  </div>
-</div></section>
-
 <!-- FAQ -->
 <section><div class="wrap" style="max-width:760px">
   <div class="label">Питання</div>
@@ -260,23 +260,23 @@ var PRODUCT = {
  "id": "powerbank-solar",
  "title": "Павербанк на сонячній батареї з LED-лампою",
  "subtitle": "Заряджається від розетки або від сонця на підвіконні. Два USB для телефонів і яскрава лампа на 20 світлодіодів — коли вимикають світло.",
- "price": 499,
+ "price": 449,
  "packs": [
   {
    "n": 1,
-   "price": 499,
+   "price": 449,
    "label": "1 павербанк",
    "note": ""
   },
   {
    "n": 2,
-   "price": 899,
+   "price": 799,
    "label": "2 павербанки",
    "note": "Вигідніше на 99 грн — собі й батькам"
   },
   {
    "n": 3,
-   "price": 1299,
+   "price": 1149,
    "label": "3 павербанки",
    "note": "Вигідніше на 198 грн"
   }
@@ -425,7 +425,7 @@ if (P.bump){$("bump").style.display="flex";$("bumpImg").src=P.bump.img;$("bumpTi
 $("minus").onclick=function(){if(q>1){q--;upd()}}; $("plus").onclick=function(){if(q<9){q++;upd()}}; upd();
 
 /* маска телефону */
-$("phone").addEventListener("focus",function(){if(!this.value)this.value="+380 "});
+
 
 /* події для реклами */
 var EV={id:P.id,name:P.title,value:P.price};
